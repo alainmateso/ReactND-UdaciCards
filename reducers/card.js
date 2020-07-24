@@ -4,11 +4,12 @@ const card = (state = {}, action) => {
   switch (action.type) {
     case ADD_CARD:
       const { cardItem, deckId } = action;
+      const deck = state[deckId]
       return {
         ...state,
-        [deckId]: {
-          ...state.deck[deckId],
-          questions: state[deckId].questions.push(cardItem)
+        [deck]: {
+          ...state[deck],
+          questions: state[deck].questions.push(cardItem)
         }
       }
     default:

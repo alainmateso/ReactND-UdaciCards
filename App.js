@@ -15,6 +15,7 @@ import thunk from 'redux-thunk'
 import Logger from 'redux-logger'
 import DeckInfo from './views/DeckInfo'
 import NewQuestion from "./views/NewQuestion";
+import Quiz from './views/Quiz'
 
 const store = createStore(reducer, applyMiddleware(thunk, Logger))
 
@@ -82,7 +83,10 @@ export class App extends React.Component {
               <Stack.Screen
                 name="Add card"
                 component={NewQuestion}
-              // options={({ route }) => ({ title: route.params.title })}
+              />
+              <Stack.Screen
+                name="Quiz"
+                component={Quiz}
               />
             </Stack.Navigator>
           </View>

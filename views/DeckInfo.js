@@ -31,7 +31,7 @@ export class DeckInfo extends Component {
           backgroundColor={black}
           color={white}
           text={'Start Quiz'}
-          onPress={() => this.props.navigation.navigate('Home')}
+          onPress={() => this.props.navigation.navigate('Quiz', { item: deckId })}
         />
       </View>
     )

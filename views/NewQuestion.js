@@ -37,9 +37,8 @@ export class NewQuestion extends Component {
     if (!answer) {
       return alert("Please provide the answer to your question")
     }
-    const deckId = this.props.route.params.item
 
-    dispatch(addCard({ question, answer }, deckId))
+    dispatch(addCard({ question, answer }, route.params.deckId))
     this.setState(() => ({
       question: '',
       answer: ''
@@ -69,11 +68,6 @@ export class NewQuestion extends Component {
           text={'Submit'}
           onPress={this.handleSubmit}
         />
-        <Text>
-          An option to enter in the question
-          An option to enter in the answer
-          An option to submit the new question
-        </Text>
       </KeyboardAvoidingView>
     )
   }
