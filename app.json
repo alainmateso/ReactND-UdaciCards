@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "sdkVersion": "38.0.0",
+    "orientation": "portrait",
+    "name": "UdaciCards - Mobile FlashCards",
+    "description": "The best mobile flashcard app you'll ever come across.",
+    "slug": "udacidards",
+    "version": "1.0",
+    "icon": "https://placeimg.com/640/480/tech/grayscale",
+    "notification": {
+      "icon": "https://placeimg.com/640/480/tech/grayscale"
+    },
+    "ios": {
+      "bundleIdentifier": "org.udacidards.exp"
+    },
+    "android": {
+      "package": "org.udacidards.exp"
+    }
+  }
+}
