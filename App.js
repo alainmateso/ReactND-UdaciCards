@@ -16,6 +16,7 @@ import Logger from 'redux-logger'
 import DeckInfo from './views/DeckInfo'
 import NewQuestion from "./views/NewQuestion";
 import Quiz from './views/Quiz'
+import { setLocalNotification } from './utils/notificationsHelper'
 
 const store = createStore(reducer, applyMiddleware(thunk, Logger))
 
@@ -55,40 +56,49 @@ const Tabs = () => {
   )
 }
 
+const StackNavigation = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: black
+        }
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={Tabs}
+        options={{ title: 'UdaciCards' }}
+      />
+      <Stack.Screen
+        name="DeckInfo"
+        component={DeckInfo}
+        options={({ route }) => ({ title: route.params.title })}
+      />
+      <Stack.Screen
+        name="Add card"
+        component={NewQuestion}
+      />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
+      />
+    </Stack.Navigator>
+  )
+}
+
 export class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={store}>
         <NavigationContainer>
           <UdaciCardsStatusBar />
           <View style={styles.container}>
-            <Stack.Navigator
-              screenOptions={{
-                headerTintColor: white,
-                headerStyle: {
-                  backgroundColor: black
-                }
-              }}
-            >
-              <Stack.Screen
-                name="Home"
-                component={Tabs}
-                options={{ title: 'UdaciCards' }}
-              />
-              <Stack.Screen
-                name="DeckInfo"
-                component={DeckInfo}
-                options={({ route }) => ({ title: route.params.title })}
-              />
-              <Stack.Screen
-                name="Add card"
-                component={NewQuestion}
-              />
-              <Stack.Screen
-                name="Quiz"
-                component={Quiz}
-              />
-            </Stack.Navigator>
+            <StackNavigation />
           </View>
         </NavigationContainer>
       </Provider>

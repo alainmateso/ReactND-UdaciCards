@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Answers from '../components/Answers'
 import Score from '../components/Score'
 import { red, green } from '../utils/colors'
+import { setLocalNotification, clearAllLocalNotification } from '../utils/notificationsHelper'
 
 export class Quiz extends Component {
   state = {
@@ -39,6 +40,8 @@ export class Quiz extends Component {
       currentQuestion: 0,
       showAnswer: false
     }));
+    clearAllLocalNotification()
+      .then(setLocalNotification);
   };
 
   render() {
@@ -72,6 +75,8 @@ export class Quiz extends Component {
               restart={this.handleReset}
               goBack={() => {
                 navigation.goBack();
+                clearAllLocalNotification()
+                  .then(setLocalNotification);
               }}
             />
           ) : (

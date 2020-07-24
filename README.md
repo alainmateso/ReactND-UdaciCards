@@ -1,44 +1,65 @@
-# My Universal React Project
+# UdaciCards - Mobile FlashCards
 
-<p>
-  <!-- iOS -->
-  <a href="https://itunes.apple.com/app/apple-store/id982107779">
-    <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  </a>
-  <!-- Android -->
-  <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample">
-    <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  </a>
-  <!-- Web -->
-  <a href="https://docs.expo.io/workflow/web/">
-    <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
-  </a>
-</p>
+## Project Setup
 
-## 🚀 How to use
+- Clone the repo from the following link:
 
-- Install packages with `yarn` or `npm install`.
-  - If you have native iOS code run `npx pod-install`
-- Run `yarn start` to start the bundler.
-- Open the project in a React runtime to try it:
-  - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
-  - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
-  - Web: Any web browser
+```
+https://github.com/alainmateso/ReactND-UdaciCards
+```
 
-## Adding Native Code
+- Navigate to the directory where the project is cloned
 
-This project can be run from a web browser or the Expo client app. You may find that you want to add more native code later on. You can do this by ejecting the project and rebuilding it yourself.
+- Install dependencies with the following command:
 
-- Run `yarn eject` to create the native projects.
-- You can still run your project in the web browser or Expo client, you just won't be able to access any new native modules you add.
+```
+yarn install
+```
 
-## Publishing
+or
 
-- Deploy the native app to the App store and Play store using this guide: [Deployment](https://docs.expo.io/distribution/app-stores/).
-- Deploy the website using this guide: [Web deployment](https://docs.expo.io/distribution/publishing-websites/).
+```
+npm install
+```
 
-## 📝 Notes
+- Start the project with the following command:
 
-- Learn more about [Universal React](https://docs.expo.io/).
-- See what API and components are [available in the React runtimes](https://docs.expo.io/versions/latest/).
-- Find out more about developing apps and websites: [Guides](https://docs.expo.io/guides/).
+```
+yarn start
+```
+
+or
+
+```
+npm start
+```
+
+## How it works
+
+When you open the app for the first time it'll tell you that you have no decks yet! Go ahead a create your decks for the cards you'll create as well.
+
+- Creating a deck is super easy. Just press the `Create Deck` tab and just fill in the prdesired deck's name and you'll be redirected to that newly created deck.
+
+Notice that if you don't fill the texp input and try to submit, you'll get an alert that you shoul fill the name.
+
+After creating a deck now go ahead and add cards.
+
+- Adding cards to a deck is also very simple. Upon taping on the deck you'll be presented with the deck's details such as its name the number of cards in that specific deck, a button to add a card and another button to start a quiz.
+
+Notice that you cannot start a quiz if the deck is still empty. Add cards by tapping the Add Card button then fill in your Question and Answer! The app will reject you if you try to submit while one of the fields is empty.
+
+You can Go ahead and start a quiz now.
+
+- When you tap on start quiz, you'll be redirected to the screen that shows the created question and a text to tap on when you want to flip the card and see the answer.
+  Fliping the card comes with the answer and two buttons for you to choose if the answer is correct or incorrect.
+
+As you answer question there's a counter in the top left corner that shows the questions you've answered so far and the total number of questions in that specific deck.
+Upon answering the last question you'll be shown your score and an equivalent percenage.
+
+If you're not satisfied, you can retake the quiz. Other than that you can also reset it.
+
+The app will send a notification at 10AM if no decks have been created on that day.
+
+### The app has been tested on an Android device running Android 10
+
+## Enjoy Your Flashing Cards 🚀

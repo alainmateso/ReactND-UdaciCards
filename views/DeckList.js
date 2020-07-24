@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   noCards: {
-    // flex: 1,
     fontSize: 25,
     color: red,
   }
