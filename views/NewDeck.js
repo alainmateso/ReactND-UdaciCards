@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingKeyboardAvoidingView, Text, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { Text, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { black, white } from '../utils/colors'
 import Button from '../components/Button'
 import { newDeck } from '../actions/deck'
 import { connect } from 'react-redux'
+import { inputStyle } from '../utils/styles'
 
 export class NewDeck extends Component {
   state = {
@@ -16,13 +17,21 @@ export class NewDeck extends Component {
     }))
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const { input } = this.state;
+    if (!input) {
+      return alert("Please specify the deck's title")
+    }
     const { dispatch } = this.props;
-    dispatch(newDeck(input));
+    await dispatch(newDeck(input));
     this.setState(() => ({
       input: ''
     }));
+
+    this.props.navigation.navigate("DeckInfo", {
+      item: input.replace(' ', ''),
+      title: input
+    })
   }
 
   render() {
@@ -34,13 +43,13 @@ export class NewDeck extends Component {
         </Text>
         <TextInput
           placeholder="Deck title"
-          style={[styles.input]}
+          style={inputStyle}
           value={input}
           onChangeText={this.handleChange}
         />
         <Button
           backgroundColor={black}
-          text={'SUBMIT'}
+          text={'Create Deck'}
           color={white}
           onPress={this.handleSubmit}
         />
@@ -58,17 +67,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 50,
-    textAlign: 'center'
-  },
-  input: {
-    borderRadius: 5,
-    width: 300,
-    padding: 10,
-    fontSize: 20,
-    borderColor: black,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    marginBottom: 10
+    textAlign: 'center',
+    marginBottom: 20,
   },
 })
 

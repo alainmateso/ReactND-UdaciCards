@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { black } from '../utils/colors'
 
 const Button = ({ text, backgroundColor, color, onPress }) => {
   return (
@@ -24,6 +25,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 200,
     maxHeight: 50,
+    borderStyle: 'solid',
+    borderColor: black,
+    borderWidth: 1,
+    margin: 10,
   }
 })
 

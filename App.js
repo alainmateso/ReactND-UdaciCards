@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
 import DeckList from './views/DeckList'
 import NewDeck from './views/NewDeck'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
@@ -12,10 +13,12 @@ import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
 import Logger from 'redux-logger'
+import DeckInfo from './views/DeckInfo'
 
 const store = createStore(reducer, applyMiddleware(thunk, Logger))
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const UdaciCardsStatusBar = () => {
   return (
@@ -57,7 +60,18 @@ export class App extends React.Component {
         <NavigationContainer>
           <UdaciCardsStatusBar />
           <View style={styles.container}>
-            <Tabs />
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={Tabs}
+                options={{ title: 'UdaciCards' }}
+              />
+              <Stack.Screen
+                name="DeckInfo"
+                component={DeckInfo}
+                options={({ route }) => ({ title: route.params.title })}
+              />
+            </Stack.Navigator>
           </View>
         </NavigationContainer>
       </Provider>

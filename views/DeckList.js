@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, FlatList } from 'react-native'
 import Deck from '../components/Deck'
 import { connect } from 'react-redux'
 import { fetchDecks } from '../actions/deck'
-import { green } from '../utils/colors'
+import { red } from '../utils/colors'
+import { FontAwesome } from '@expo/vector-icons'
 
 export class DeckList extends Component {
   componentDidMount() {
@@ -15,18 +16,20 @@ export class DeckList extends Component {
     const { allDecks } = this.props
     const { title, questions } = allDecks[item]
     return (
-      <Deck title={title} questions={questions} />
+      <Deck
+        title={title}
+        questions={questions}
+        onPress={() => this.props.navigation.navigate('DeckInfo', { item, title })}
+      />
     )
   }
   render() {
     const { allDecks } = this.props;
-    console.log('What decks do we have ', this.props)
     if (!Object.keys(allDecks).length) {
       return (
         <View style={styles.container}>
-          <Text style={styles.noCards}>
-            No Decks in here yet!
-          </Text>
+          <FontAwesome name="frown-o" size={100} color="black" />
+          <Text style={styles.noCards}>You haven't created any decks yet!</Text>
         </View>
       )
     }
@@ -34,6 +37,7 @@ export class DeckList extends Component {
       <FlatList
         data={Object.keys(allDecks)}
         renderItem={this.renderItem}
+        keyExtractor={item => item}
       />
     )
   }
@@ -43,16 +47,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   noCards: {
+    // flex: 1,
     fontSize: 25,
-    color: green
+    color: red,
   }
 })
-
-// const mapStateToProps = decks => ({
-//   decks: JSON.parse(JSON.stringify(decks))
-// });
 
 function mapStateToProps(decks) {
   return {

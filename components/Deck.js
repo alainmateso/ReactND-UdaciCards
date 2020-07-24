@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { white, gray } from '../utils/colors'
+import { deckTitle, cards } from '../utils/styles'
 
 const Deck = ({ title, questions, onPress }) => {
   const numberOfCards = questions.length
   return (
-    <TouchableOpacity style={styles.container}>
-      <Text style={styles.cardName}>{title}</Text>
-      <Text style={styles.cards}>{numberOfCards === 0 ? 'No cards in this deck!' : `${numberOfCards} cards`}</Text>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text style={deckTitle}>{title}</Text>
+      <Text style={cards}>
+        {!numberOfCards
+          ? 'No cards in this deck!'
+          : numberOfCards > 1
+            ? `${numberOfCards} cards`
+            : `${numberOfCards} card`}
+      </Text>
     </TouchableOpacity>
   )
 }
@@ -21,15 +28,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     backgroundColor: white,
     borderRadius: 5,
-    margin: 5,
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 15,
+    marginRight: 15,
   },
-  cardName: {
-    fontSize: 30,
-  },
-  cards: {
-    fontSize: 20,
-    color: gray,
-  }
 })
 
 export default Deck
