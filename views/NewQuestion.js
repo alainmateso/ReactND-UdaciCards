@@ -38,7 +38,7 @@ export class NewQuestion extends Component {
       return alert("Please provide the answer to your question")
     }
 
-    dispatch(addCard({ question, answer }, route.params.deckId))
+    dispatch(addCard({ question, answer }, route.params.item))
     this.setState(() => ({
       question: '',
       answer: ''

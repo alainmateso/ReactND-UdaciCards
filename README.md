@@ -56,7 +56,7 @@ You can Go ahead and start a quiz now.
 As you answer question there's a counter in the top left corner that shows the questions you've answered so far and the total number of questions in that specific deck.
 Upon answering the last question you'll be shown your score and an equivalent percenage.
 
-If you're not satisfied, you can retake the quiz. Other than that you can also reset it.
+If you're not satisfied, you can retake the quiz. Other than that you can go back to the deck.
 
 The app will send a notification at 10AM if no decks have been created on that day.
 
