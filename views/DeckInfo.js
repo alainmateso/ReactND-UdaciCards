@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
-export class Deck extends Component {
+export class DeckInfo extends Component {
   render() {
     return (
       <View>
@@ -14,4 +14,4 @@ export class Deck extends Component {
   }
 }
 
-export default Deck
+export default DeckInfo

@@ -7,6 +7,13 @@ import NewDeck from './views/NewDeck'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
 import Constants from 'expo-constants'
 import { black } from "./utils/colors";
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import reducer from './reducers'
+import thunk from 'redux-thunk'
+import Logger from 'redux-logger'
+
+const store = createStore(reducer, applyMiddleware(thunk, Logger))
 
 const Tab = createBottomTabNavigator();
 
@@ -26,14 +33,14 @@ const Tabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="DeckList"
+        name="Deck List"
         component={DeckList}
         options={{
           tabBarIcon: () => <FontAwesome name="stack-exchange" size={24} color="black" />
         }}
       />
       <Tab.Screen
-        name="NewDeck"
+        name="Create Deck"
         component={NewDeck}
         options={{
           tabBarIcon: () => <Entypo name="new-message" size={24} color="black" />
@@ -46,13 +53,14 @@ const Tabs = () => {
 export class App extends React.Component {
   render() {
     return (
-      <NavigationContainer>
-        <UdaciCardsStatusBar />
-        <View style={styles.container}>
-          <Tabs />
-        </View>
-      </NavigationContainer>
-
+      <Provider store={store}>
+        <NavigationContainer>
+          <UdaciCardsStatusBar />
+          <View style={styles.container}>
+            <Tabs />
+          </View>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }
