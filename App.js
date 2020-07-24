@@ -7,13 +7,14 @@ import DeckList from './views/DeckList'
 import NewDeck from './views/NewDeck'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
 import Constants from 'expo-constants'
-import { black } from "./utils/colors";
+import { black, white } from "./utils/colors";
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
 import Logger from 'redux-logger'
 import DeckInfo from './views/DeckInfo'
+import NewQuestion from "./views/NewQuestion";
 
 const store = createStore(reducer, applyMiddleware(thunk, Logger))
 
@@ -60,7 +61,14 @@ export class App extends React.Component {
         <NavigationContainer>
           <UdaciCardsStatusBar />
           <View style={styles.container}>
-            <Stack.Navigator>
+            <Stack.Navigator
+              screenOptions={{
+                headerTintColor: white,
+                headerStyle: {
+                  backgroundColor: black
+                }
+              }}
+            >
               <Stack.Screen
                 name="Home"
                 component={Tabs}
@@ -70,6 +78,11 @@ export class App extends React.Component {
                 name="DeckInfo"
                 component={DeckInfo}
                 options={({ route }) => ({ title: route.params.title })}
+              />
+              <Stack.Screen
+                name="Add card"
+                component={NewQuestion}
+              // options={({ route }) => ({ title: route.params.title })}
               />
             </Stack.Navigator>
           </View>

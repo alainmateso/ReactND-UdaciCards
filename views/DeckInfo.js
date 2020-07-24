@@ -7,26 +7,25 @@ import { connect } from 'react-redux'
 
 export class DeckInfo extends Component {
   render() {
-    console.log('this.props', this.props)
     const { deckId, deckData } = this.props
     const { title, questions } = deckData;
-    const numberOfCards = deckData.length;
+    const numberOfCards = questions.length;
     return (
       <View style={styles.container}>
         <Text>{this.props.deck}</Text>
         <Text style={deckTitle}>{title}</Text>
         <Text style={cards}>{
-          !questions.length
+          questions.length === 0
             ? 'No cards in this deck!'
             : (numberOfCards > 1
               ? `${numberOfCards} cards`
-              : `${numberOfCards} cards`)
+              : `${numberOfCards} card`)
         }</Text>
         <Button
           backgroundColor={white}
           color={black}
           text={'Add Card'}
-          onPress={() => this.props.navigation.navigate('Home')}
+          onPress={() => this.props.navigation.navigate('Add card', { item: deckId })}
         />
         <Button
           backgroundColor={black}

@@ -20,3 +20,16 @@ export const saveDeckTitle = async (title) => {
     };
   });
 }
+
+export const getDeck = (id) => {
+  AsyncStorage.getItem(UDACICARDS_KEY)
+    .then(JSON.parse)
+    .then((results) => results[id])
+}
+
+export const addCardToDeck = async (cardItem, deckId) => {
+  const data = await AsyncStorage.getItem(UDACICARDS_KEY).then(JSON.parse);
+  console.log('data...', data)
+  data[deckId].questions.push(cardItem);
+  return AsyncStorage.setItem(UDACICARDS_KEY, JSON.stringify(data));
+}
