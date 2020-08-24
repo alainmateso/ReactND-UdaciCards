@@ -6,9 +6,9 @@
     "description": "The best mobile flashcard app you'll ever come across.",
     "slug": "udacidards",
     "version": "1.0",
-    "icon": "https://placeimg.com/640/480/tech/grayscale",
+    "icon": "https://via.placeholder.com/150",
     "notification": {
-      "icon": "https://placeimg.com/640/480/tech/grayscale"
+      "icon": "https://via.placeholder.com/150"
     },
     "ios": {
       "bundleIdentifier": "org.udacidards.exp"
